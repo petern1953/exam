@@ -1,0 +1,91 @@
+<p>event-editor works!</p>
+<div class="row">
+  <div *ngIf="event$ | async as event" class="col-6 offset-3">
+    <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, event)">
+      <!-- <div class="form-group">
+        <label>#</label>
+        <input
+          [(ngModel)]="event.id"
+          name="id"
+          type="number"
+          class="form-control"
+        />
+      </div> -->
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          [(ngModel)]="event.name"
+          name="name"
+          type="text"
+          class="form-control"
+          pattern=".{8,}"
+          required
+        />
+        <!-- <div [hidden]="eventForm.controls.name?.valid" class="error-message">
+          A névnek minimum 8 maximum 20 karakter hosszúnak kell lennie!
+        </div> -->
+        <div [hidden]="eventForm.controls.name?.valid" class="error-message">
+          A névnek minimum 8 karakter hosszúnak kell lennie!
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input
+          [(ngModel)]="event.date"
+          name="date"
+          type="text"
+          class="form-control"
+          pattern="^([0-9]|1[0-2])\/([0-9]|[1-2][0-9]|3[0-1])\/\d{4}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Time</label>
+        <input
+          [(ngModel)]="event.time"
+          name="time"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Country</label>
+        <input
+          [(ngModel)]="event.location.country"
+          name="country"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input
+          [(ngModel)]="event.location.city"
+          name="city"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input
+          [(ngModel)]="event.location.address"
+          name="address"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <button
+        [disabled]="eventForm.invalid"
+        type="submit"
+        class="btn btn-block btn-primary btn-lg"
+      >
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>

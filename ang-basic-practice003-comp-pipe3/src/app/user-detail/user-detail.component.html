@@ -1,0 +1,28 @@
+<div class="card user-card" *ngIf="currentUser.id > 0">
+  <div class="card-header">Selected User</div>
+  <div class="card-body">
+    <!--
+      FELADAT!
+      Jelenítsd meg a user négy tulajdonságát egymás alatti p elemekben:
+      id, name, email, address
+     -->
+    <p>{{ currentUser.id }}</p>
+    <p>{{ currentUser.name }}</p>
+    <p>{{ currentUser.email }}</p>
+    <p>{{ currentUser.address }}</p>
+
+    <p>
+      <!--
+        FELADAT!
+        1. Készíts ide egy gombot, btn, btn-danger és btn-block oszályokkal.
+        2. A gombban legyen a trash ikon és a delete szöveg.
+        3. Állítsd be a gombra event-binding segítségével a click
+        eseményre az onDelete metódust és add át neki a user -t.
+       -->
+      <!-- <button (click)="onDelete(currentUser)" (click)="(currentUser=0)" class="btn btn-danger btn-block"> -->
+      <button (click)="onDelete(currentUser); (currentUser=0)" class="btn btn-danger btn-block">
+        <i class="fa fa-trash">delete</i>
+      </button>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="row">
+  <div *ngIf="event$ | async as event" class="col-6 offset-3">
+    <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, event)">
+      <div class="form-group">
+        <label for="">Name</label>
+        <input
+          name="name"
+          [(ngModel)]="event.name"
+          type="text"
+          class="form-control"
+          pattern=".{8,25}"
+          required
+        />
+        <div
+          [hidden]="
+            eventForm.controls.name?.valid || !eventForm.controls.name?.invalid
+          "
+          class="error-message"
+        >
+          The name must be minimum 8 maximum 25 characters long.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Date</label>
+        <input
+          name="date"
+          [(ngModel)]="event.date"
+          type="text"
+          class="form-control"
+          required
+          pattern="^([1-9]|[1-2][0-9]|3[0-1])\/([1-9]|1[0-1])\/\d{4}$"
+        />
+        <div [hidden]="eventForm.controls.date?.valid" class="error-message">
+          Invalid date!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Time</label>
+        <input
+          name="time"
+          [(ngModel)]="event.time"
+          type="text"
+          class="form-control"
+          required
+          pattern="^(0\d|1[0-2][ap]m$)"
+        />
+        <div [hidden]="eventForm.controls.time?.valid" class="error-message">
+          Invalid time! Should be of form: 00am or 00pm!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Country</label>
+        <input
+          name="country"
+          [(ngModel)]="event.location.country"
+          type="text"
+          class="form-control"
+          required
+          pattern="[A-Z]{5-25}"
+        />
+        <div [hidden]="eventForm.controls.country?.valid" class="error-message">
+          The country should be 5 to 25 character-long capital lettered name!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">City</label>
+        <input
+          name="city"
+          [(ngModel)]="event.location.city"
+          type="text"
+          class="form-control"
+          required
+          pattern="[A-Z][A-Za-z]{5-25}"
+        />
+        <div [hidden]="eventForm.controls.city?.valid" class="error-message">
+          The city-name should be 5 to 25 characters long and start by capital
+          letter!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Address</label>
+        <input
+          name="address"
+          [(ngModel)]="event.location.address"
+          type="text"
+          class="form-control"
+          required
+          pattern=".{10,50}"
+        />
+        <div [hidden]="eventForm.controls.address?.valid" class="error-message">
+          The city-name should be 10 to 50 characters long!
+        </div>
+      </div>
+
+      <button
+        [disabled]="eventForm.invalid"
+        type="submit"
+        class="btn btn-primary btn-block btn-lg"
+      >
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12 mb-1 py-1 d-flex justify-content-between">
+        <app-data-cell [data]="dataRow" [key]="'id'"></app-data-cell>
+        <app-data-cell [data]="dataRow" [key]="'name'"></app-data-cell>
+        <app-data-cell [data]="dataRow" [key]="'email'"></app-data-cell>
+        <app-data-cell [data]="dataRow" [key]="'address'"></app-data-cell>
+        <app-data-cell [data]="dataRow" [key]="'active'"></app-data-cell>
+        <!-- <app-data-cell [price]="150"></app-data-cell> -->
+
+        <!-- <app-action-button-group (selectClick)="onSelectClicked()" (updateClick)="onUpdateClicked()" -->
+        <!-- (deleteClick)="onDeleteClicked()"></app-action-button-group> -->
+        <app-action-button-group (selectClick)="onSelectClicked(dataRow)" (updateClick)="onUpdateClicked(dataRow)"
+            (deleteClick)="onDeleteClicked(dataRow)"></app-action-button-group>
+    </div>
+</div>
