@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of eventsList$ | async">
+            <td>{{ event.date }}</td>
+            <td>{{ event.name }}</td>
+            <td>{{ event.time }}</td>
+            <td>
+              {{ event.location.country }} - {{ event.location.city }} - {{ event.location.address }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
